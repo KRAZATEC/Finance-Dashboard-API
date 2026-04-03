@@ -37,6 +37,7 @@ For a full, step-by-step technical walkthrough on how it was deployed, see the *
 
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
+  - [Architecture Diagram](#architecture-diagram)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Roles and Permissions](#roles-and-permissions)
@@ -48,6 +49,8 @@ For a full, step-by-step technical walkthrough on how it was deployed, see the *
 - [Design Decisions](#design-decisions)
 - [Assumptions](#assumptions)
 - [Running Tests](#running-tests)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
 ---
 
@@ -66,6 +69,24 @@ For a full, step-by-step technical walkthrough on how it was deployed, see the *
 ---
 
 ## Project Structure
+
+### Architecture Diagram
+
+```mermaid
+graph TD
+    Client["Client (Swagger UI / App)"] -->|REST API| Express["Express.js Server"]
+    
+    subgraph "Backend Application"
+        Express --> Router["API Routes (/api/*)"]
+        Router --> Middlewares["Middleware (Auth, Validators, Rate Limiter)"]
+        Middlewares --> Controllers["Controllers (Auth, Users, Records, Dashboard)"]
+    end
+    
+    Controllers --> Model["Database Helpers (db.js)"]
+    Model --> SQLite[("SQLite (sql.js In-Memory)")]
+```
+
+### Directory Tree
 
 ```
 finance-dashboard/
@@ -350,3 +371,23 @@ Tests use an in-memory database that's wiped and re-seeded before each test suit
 - User management (CRUD, role/status changes, access control)
 - Records (CRUD, filtering, soft delete, role enforcement)
 - Dashboard (summary, categories, trends, recent activity)
+
+---
+
+## Troubleshooting
+
+- **Swagger UI shows "Failed to fetch"**: Ensure that your API connects via a relative URL block in your `src/utils/swagger.js`.
+- **Database resets on restart**: This project intentionally uses an in-memory `sql.js` SQLite database for portability and ease of demonstration. Data resets on server restarts. To persist data, move to a file-backed driver like `better-sqlite3`.
+- **Port Conflicts**: If port 3000 is occupied, you can easily change the active port by running your server with a different environment variable (e.g. `PORT=8080 npm start`).
+
+---
+
+## License
+
+This project is open-source and available under the **MIT License**. You are free to copy, modify, and distribute this software as per the guidelines of the license.
+
+---
+
+<p align="center">
+  <b>Made with ❤️ by KRAZATEC</b>
+</p>
