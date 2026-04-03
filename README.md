@@ -1,10 +1,39 @@
-# Finance Dashboard API
+# 📊 Finance Dashboard API
+
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
 A RESTful backend for a role-based financial management system. Built with Node.js, Express, and SQLite (via sql.js — no native build tools required).
 
 ---
 
-## Table of Contents
+## 🚀 Live Demo & API Documentation
+
+> [!TIP]
+> **Live Interactive Swagger API:** [https://finance-dashboard-api.up.railway.app/api-docs/](https://finance-dashboard-api.up.railway.app/api-docs/)
+
+The project is actively deployed on Railway. You can directly interact with all the API endpoints, test authentication, and manage records directly from your browser using the sleek Swagger UI at the link above.
+
+For a full, step-by-step technical walkthrough on how it was deployed, see the **[Deployment Guide](./DEPLOYING.md)**.
+
+---
+
+## ✨ Features Implemented
+
+- ✅ **User and Role Management**: Registration, login, profile updates, and admin role assignments.
+- ✅ **Financial Records CRUD**: Create, Read, Update, and Soft Delete financial records.
+- ✅ **Record Filtering**: Filter transactions by date range (`from`/`to`), `category`, and `type`.
+- ✅ **Dashboard Summary APIs**: Real-time calculations for totals, category breakdowns, and trends.
+- ✅ **Role Based Access Control (RBAC)**: Secure access restriction for `viewer`, `analyst`, and `admin` roles.
+- ✅ **Input Validation and Error Handling**: Bulletproof validation using `express-validator` and global error tracking.
+- ✅ **Data Persistence (Database)**: Full SQLite persistence structure natively integrated.
+
+---
+
+## 📑 Table of Contents
 
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -19,26 +48,6 @@ A RESTful backend for a role-based financial management system. Built with Node.
 - [Design Decisions](#design-decisions)
 - [Assumptions](#assumptions)
 - [Running Tests](#running-tests)
-- [Live Demo](#live-demo)
-- [API Documentation](#api-documentation)
-
----
-
-## Live Demo
-
-> [!TIP]
-> **Live Demo URL:** [https://your-api-service.onrender.com](https://your-api-service.onrender.com) (Placeholder)
-
-
-For a full, step-by-step walkthrough, see the **[Deployment Guide](./DEPLOYING.md)**.
-
-## API Documentation
-
-This project uses **Swagger UI** to provide interactive documentation. Once the server is running, you can explore and test the API at:
-
-**[http://localhost:3000/api-docs](http://localhost:3000/api-docs)**
-
-If you have deployed the API, replace `localhost:3000` with your live service URL.
 
 ---
 
