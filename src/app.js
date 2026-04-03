@@ -40,6 +40,10 @@ app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISO
 // ── API Documentation ──────────────────────────────────────────────────────────
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// ── Redirects ──────────────────────────────────────────────────────────────────
+app.get('/', (req, res) => res.redirect('/api-docs'));
+app.get('/docs', (req, res) => res.redirect('/api-docs'));
+
 // ── API routes ────────────────────────────────────────────────────────────────
 app.use('/api/auth',      authRoutes);
 app.use('/api/users',     userRoutes);
